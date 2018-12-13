@@ -27,7 +27,8 @@
     </Flows>
     <HTTPProxyConnection>
         <BasePath>/v1/savanna-preview-api</BasePath>
-        <VirtualHost>HTTPS_VHost</VirtualHost>
+        <VirtualHost>default</VirtualHost>
+		<VirtualHost>secure</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="default">
         <TargetEndpoint>default</TargetEndpoint>
