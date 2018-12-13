@@ -244,21 +244,21 @@ sleep 40
   echo "full response get deploy status"
   echo "$deployApplicationResponse"
 
-  deployedApplicationStatus=`/bin/echo $deployApplicationResponse |  jq '.environment[0].state' |  sed -e 's:\"::g'`
+ 
   deployedAPIProxy=`/bin/echo $deployApplicationResponse |  jq '.aPIProxy' |  sed -e 's:\"::g'`
 
-  if [ "$deployedApplicationStatus" = "deployed" ] && [ "$deployedAPIProxy" = "$applicationName" ]; then
+  if  [ "$deployedAPIProxy" = "$applicationName" ]; then
     echo ""
     echo "-----------------------------------------------------------------------"
     echo "$applicationName application deployment is successfull."
-    echo "applicationStatus=$deployedApplicationStatus || deployedAPIProxy=$deployedAPIProxy"
+    echo "deployedAPIProxy=$deployedAPIProxy"
     echo "-----------------------------------------------------------------------"
     echo ""
   else
     echo ""
     echo "*********************************************************************"
     echo "$applicationName application deployment did not kick start. Please review the logs"
-    echo "applicationStatus=$deployedApplicationStatus || deployedAPIProxy=$deployedAPIProxy"
+    echo "deployedAPIProxy=$deployedAPIProxy"
     echo "*********************************************************************"
     echo ""
     exit 1
